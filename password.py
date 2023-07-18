@@ -1,8 +1,3 @@
-print('Пароль повинен бути: '
-      '1. Довжиною більше 8',
-      '2. В паролі повинні бути Великі літери, маленькі літери, числа і спеціальний знак мінімум один з:('
-      '+-/*!"№;%:?*()).'
-      )
 lowercase_letters = tuple("abcdefghijklmnopqrstuvwxyz")
 uppercase_letters = tuple("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
 digits = tuple("0123456789")
