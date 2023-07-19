@@ -1,27 +1,34 @@
-lowercase_letters = tuple("abcdefghijklmnopqrstuvwxyz")
-uppercase_letters = tuple("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
-digits = tuple("0123456789")
+from string import ascii_lowercase, ascii_uppercase, digits
 symbols = '+-/*!"№;%:?*()'
 
 
-def check_password(my_password) -> bool:
-    numbers = 0
-    uppercase_latter = 0
-    lowercase_latter = 0
-    special_symbol = 0
+def are_lowercase_latter(my_password: str) -> bool:
+    for mark in my_password:
+        if mark in ascii_lowercase:
+            return True
+
+
+def are_uppercase_latter(my_password: str) -> bool:
+    for mark in my_password:
+        if mark in ascii_uppercase:
+            return True
+
+
+def are_digits(my_password: str) -> bool:
+    for mark in my_password:
+        if mark in digits:
+            return True
+
+
+def are_symbol(my_password: str) -> bool:
+    for mark in my_password:
+        if mark in symbols:
+            return True
+
+
+def is_password_correct(my_password: str) -> bool:
+    d = are_symbol(my_password), are_digits(my_password), are_lowercase_latter(my_password), are_uppercase_latter(my_password)
     if len(my_password) >= 8:
-        for mark in my_password:
-            if mark in lowercase_letters:
-                lowercase_latter += 1
-            if mark in uppercase_letters:
-                uppercase_latter += 1
-            if mark in digits:
-                numbers += 1
-            if mark in symbols:
-                special_symbol += 1
-    elif len(my_password) in range(0, 8):
-        return False
-    if lowercase_latter >= 1 and uppercase_latter >= 1 and numbers >= 1 and special_symbol >= 1:
-        return True
+        return all(d)
     else:
         return False
